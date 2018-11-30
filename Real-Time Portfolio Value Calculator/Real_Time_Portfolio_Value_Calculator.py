@@ -61,3 +61,5 @@ def lightChange():
     stockPrice('NTDOY',2)
 portCalc(times[0])
 
+#This is a commment to test the commit to GitHub
+
