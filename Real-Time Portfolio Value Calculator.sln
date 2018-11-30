@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Real-Time Portfolio Value Calculator", "Real-Time Portfolio Value Calculator\Real-Time Portfolio Value Calculator.pyproj", "{50A2EE2C-A3E9-45AC-A2F7-E5DF188E5BF2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{50A2EE2C-A3E9-45AC-A2F7-E5DF188E5BF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50A2EE2C-A3E9-45AC-A2F7-E5DF188E5BF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6F78682E-C1D6-49DA-95D6-CD13848E7CE3}
+	EndGlobalSection
+EndGlobal
