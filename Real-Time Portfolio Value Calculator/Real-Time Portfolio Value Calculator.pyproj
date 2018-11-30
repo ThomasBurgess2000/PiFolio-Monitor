@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>50a2ee2c-a3e9-45ac-a2f7-e5df188e5bf2</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Real_Time_Portfolio_Value_Calculator.py</StartupFile>
+    <StartupFile>PiFolioMonitor.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,7 +21,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Real_Time_Portfolio_Value_Calculator.py" />
+    <Compile Include="PiFolioMonitor.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
