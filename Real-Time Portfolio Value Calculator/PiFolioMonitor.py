@@ -1,20 +1,23 @@
 from alpha_vantage.timeseries import TimeSeries
 import sys
-from datetime import datetime, timedelta
-from sense_hat import senseHat
+from datetime import datetime as dt
+from datetime import timedelta
+from sense_hat import SenseHat
 
 
 #Variables for calculation
-currentDT = datetime.datetime.now()
+currentDT = dt.now()
 currentYMD= str(currentDT.year) + '-' + str(currentDT.month) + '-' + str(currentDT.day)
-yesterdayYMD=datetime.strftime(datetime.now()-timedelta(1), '%Y-%M-%d')
+delta=timedelta(days=1)
+yesterdayUnformatted=currentDT-delta
+yesterdayYMD=yesterdayUnformatted.strftime('%Y-%m-%d')
 currentHour = currentDT.hour
 currentHourIndex=currentDT.hour-9
 times=[currentYMD+' '+'09:30:00',currentYMD+' '+'10:30:00',currentYMD+' '+'11:30:00',currentYMD+' '+'12:30:00',currentYMD+' '+'13:30:00',currentYMD+' '+'14:30:00',currentYMD+' '+'15:30:00']
 portfolioValues=[]
 
 #Variables for Sense HAT
-sense = senseHat()
+sense = SenseHat()
 yellow= (255,255,0)
 red=(255,0,0)
 green=(0,255,0)
@@ -67,6 +70,6 @@ def lightChange():
         startTime+=1
     #while loop that runs through number of indexes in portfolioValues and changes lights accordingly (needs to compare to starting value somehow)
 
-    stockPrice('NTDOY',2)
+
 portCalc(times[0])
 
