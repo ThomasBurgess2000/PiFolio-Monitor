@@ -1,6 +1,6 @@
-# Real-Time-Portfolio-Value-Calculator
+# PiFolio Monitor
 
-This program allows you to visualize your portfolio on your Raspberry Pi Sense HAT. Whenever you toggle the joystick on the HAT, it will light up showing you how the value of your portfolio has changed throughout the day. 
+This program allows you to visualize your portfolio value changes on your Raspberry Pi Sense HAT. Whenever you toggle the joystick up on the HAT, it will light up showing you how the value of your portfolio has changed throughout the day. 
 
 **Required Packages and Comments About Files**  
 I've uploaded the requirements.txt file for the Python environment I used for this progmam. I am certain alpha_vantage, datetime, and sense-hat were crucial, but I'm not sure about the others. I tried removing urllib3 from the environment, and then the program started returning a lot of errors. So I've kept it in for now, but if you know how to slim down the package requirements, submit a pull request.
