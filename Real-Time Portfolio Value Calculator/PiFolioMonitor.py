@@ -2,8 +2,8 @@ from alpha_vantage.timeseries import TimeSeries
 import sys
 from datetime import datetime as dt
 from datetime import timedelta
-from sense_hat import SenseHat
-
+from sense_hat import SenseHat, ACTION_PRESSED, ACTION_HELD, ACTION_RELEASED
+from signal import pause
 
 #Variables for calculation
 currentDT = dt.now()
@@ -208,6 +208,22 @@ def lightChange():
                 sense.show_message(str(finalDisplayedChange))
 
             hourIndex += 1
-                    
-lightChange()
+ 
+#Turns off the matrix lights
+def clear ():
+    sense.clear()
+
+#Function for toggling the screen on/off with just the up joystick
+toggleValue = False
+def pushed_up ():
+    if (toggleValue == False):
+        toggleValue = True
+        lightChange()
+    else:
+        toggleValue = False
+        clear()
+
+
+sense.stick.direction_up = pushed_up
+pause()
 
