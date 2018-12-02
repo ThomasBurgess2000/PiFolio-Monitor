@@ -26,6 +26,7 @@ sense = SenseHat()
 yellow = (255,255,0)
 red = (255,0,0)
 green = (0,255,0)
+toggleValue = False
 
 #Portfolio ['SYMBOL',# of shares]
 portfolio = [['TSLA',16],['OLED',6],['NTDOY',2]]
@@ -71,7 +72,7 @@ def lightChange():
     hourIndex = 0
     #puts portfolio values for each hour into the portfolioValues list
     if ((currentDT.weekday()==6) or (currentDT.weekday()==5)):
-        print ("Markets closed for weekend")
+        print ("Markets closed for weekend.")
         sense.show_message("Markets closed for weekend")
     else:
         while ((startTime<(currentDT.hour+1)) and (startTime<16)):
@@ -213,17 +214,23 @@ def lightChange():
 def clear ():
     sense.clear()
 
-#Function for toggling the screen on/off with just the up joystick
-toggleValue = False
-def pushed_up ():
-    if (toggleValue == False):
-        toggleValue = True
-        lightChange()
-    else:
-        toggleValue = False
-        clear()
+#Main Function
+
+print ("Powering up.")
+sense.show_message("ON")
+print ("Now running.")
+
+while True:
+    for event in sense.stick.get_events():
+        if (event.action == 'pressed' and event.direction == 'up'):
+            if (toggleValue == False):
+                toggleValue = True
+                lightChange()
+            else:
+                toggleValue = False
+                print ("Cleared")
+                clear()
 
 
-sense.stick.direction_up = pushed_up
-pause()
+
 
