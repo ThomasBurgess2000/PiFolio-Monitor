@@ -3,7 +3,7 @@ import sys
 from datetime import datetime as dt
 from datetime import timedelta
 from sense_hat import SenseHat, ACTION_PRESSED, ACTION_HELD, ACTION_RELEASED
-from signal import pause
+import time
 
 #Variables for calculation
 currentDT = dt.now()
@@ -224,6 +224,8 @@ sense.show_message("ON")
 print ("Now running.\n")
 
 #Accepts joystick as input and acts accordingly
+#WARNING: The AlphaVantage API only allows 5 API calls a minute, and 500 a day. If you try to toggle the screen on twice in one minute you will crash the program,
+#so after you clear the screen you must wait 55 seconds before calling anything again.
 while True:
     for event in sense.stick.get_events():
         if (event.action == 'pressed' and event.direction == 'up'):
@@ -234,6 +236,7 @@ while True:
                 toggleValue = False
                 print ("Cleared")
                 clear()
+                time.sleep(55)
         
 
 
