@@ -63,14 +63,13 @@ def portCalc(time):
         print ("Checking " + currentSymbol)
         portfolioValue = portfolioValue+ (stockCalc(currentSymbol, currentShares, time))
         portfolioIteration += 1
-    print ("Portfolio value is: " + str(portfolioValue))
+    print ("\nPortfolio value is: " + str(portfolioValue))
     return portfolioValue
 
 #Takes past portfolio values and changes lights accordingly
 def lightChange():
     startTime = 9
     hourIndex = 0
-    #puts portfolio values for each hour into the portfolioValues list
     if ((currentDT.weekday()==6) or (currentDT.weekday()==5)):
         ts = TimeSeries(key = 'WJOFY5CTSKEC2VSP')
         data = ts.get_intraday(symbol = 'TSLA', interval = '60min', outputsize = 'compact')
@@ -78,13 +77,14 @@ def lightChange():
         lastRefreshedPriceString=str(round(portCalc(lastRefreshed),2))
         sense.show_message(lastRefreshedPriceString)
     else:
+        #puts portfolio values for each hour into the portfolioValues list
         while ((startTime<(currentDT.hour+1)) and (startTime<16)):
             portfolioValues[hourIndex] = portCalc(times[hourIndex])
             hourIndex += 1
             startTime += 1
-#Puts percentage changes (portfolioValues vs startingValue) into portfolioChanges array
         hourIndex=0
         startingValue = portCalc(yesterdayClose)
+        #Puts percentage changes (portfolioValues vs startingValue) into portfolioChanges array
         while (hourIndex<(len(portfolioValues))):
             portfolioChanges[hourIndex] = ((portfolioValues[hourIndex]-startingValue)/startingValue)*100
             print (portfolioChanges[hourIndex])
@@ -234,7 +234,7 @@ while True:
                 toggleValue = False
                 print ("Cleared")
                 clear()
-
+        
 
 
 
