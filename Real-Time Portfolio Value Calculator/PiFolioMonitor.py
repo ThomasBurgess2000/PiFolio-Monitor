@@ -63,7 +63,7 @@ def portCalc(time):
         print ("Checking " + currentSymbol)
         portfolioValue = portfolioValue+ (stockCalc(currentSymbol, currentShares, time))
         portfolioIteration += 1
-    print (portfolioValue)
+    print ("Portfolio value is: " + str(portfolioValue))
     return portfolioValue
 
 #Takes past portfolio values and changes lights accordingly
@@ -72,8 +72,11 @@ def lightChange():
     hourIndex = 0
     #puts portfolio values for each hour into the portfolioValues list
     if ((currentDT.weekday()==6) or (currentDT.weekday()==5)):
-        print ("Markets closed for weekend.")
-        sense.show_message("Markets closed for weekend")
+        ts = TimeSeries(key = 'WJOFY5CTSKEC2VSP')
+        data = ts.get_intraday(symbol = 'TSLA', interval = '60min', outputsize = 'compact')
+        lastRefreshed = data[1]['3. Last Refreshed']
+        lastRefreshedPriceString=str(round(portCalc(lastRefreshed),2))
+        sense.show_message(lastRefreshedPriceString)
     else:
         while ((startTime<(currentDT.hour+1)) and (startTime<16)):
             portfolioValues[hourIndex] = portCalc(times[hourIndex])
@@ -218,8 +221,9 @@ def clear ():
 
 print ("Powering up.")
 sense.show_message("ON")
-print ("Now running.")
+print ("Now running.\n")
 
+#Accepts joystick as input and acts accordingly
 while True:
     for event in sense.stick.get_events():
         if (event.action == 'pressed' and event.direction == 'up'):
