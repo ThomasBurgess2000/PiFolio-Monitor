@@ -1,3 +1,5 @@
+# AS OF NOW THE SCRIPT IS NOT WORKING, DUE TO MAKING TOO MANY API REQUESTS. I AM TOO CHEAP TO BUY AN API LICENSE TO FIX IT. IT'S VERY NEARLY COMPLETE IF YOU WANT TO TRY IT YOURSELF.
+
 # PiFolio Monitor
 
 This program allows you to visualize your portfolio value changes on your Raspberry Pi Sense HAT. Whenever you toggle the joystick up on the HAT, it will light up showing you how the value of your portfolio has changed throughout the day. 
